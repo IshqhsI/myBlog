@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 
@@ -25,5 +26,5 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('categories', CategoryController::class)->name('index', 'categories.index')->middleware('auth');
 Route::resource('posts', PostController::class)->name('index', 'posts.index')->middleware('auth');
-
+Route::resource('comments', CommentController::class)->name('index', 'comments.index')->middleware('auth');
 require __DIR__ . '/auth.php';
