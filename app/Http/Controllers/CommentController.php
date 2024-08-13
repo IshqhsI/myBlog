@@ -12,4 +12,8 @@ class CommentController extends Controller
         $comments = Comment::all();
         return view('comment.index', compact('comments'));
     }
+
+    public function create(){
+        return view('comment.create');
+    }
 }
