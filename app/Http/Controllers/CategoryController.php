@@ -16,4 +16,18 @@ class CategoryController extends Controller
     public function create(){
         return view('category.create');
     }
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => ['required', 'string', 'unique:categories,name'],
+            'description' => 'required',
+        ]);
+
+        $category = new Category();
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
+
+        return redirect('/categories')->with('success', 'Category created successfully.');
+    }
 }
