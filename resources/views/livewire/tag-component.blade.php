@@ -62,8 +62,9 @@
                                 @method('delete')
                                 <button type="submit" onclick="return confirm('Are you sure?')"
                                     class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-600 dark:hover:bg-red-700">
-                                    Delete
+                                    Delete {{ $tag->id }}
                                 </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
