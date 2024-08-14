@@ -38,6 +38,10 @@ class CommentController extends Controller
     }
 
     public function update(Request $request, $id){
+        $request->validate([
+            'comment_text' => 'required',
+        ]);
+
         $comment = Comment::find($id);
         $comment->comment_text = $request->comment_text;
         $comment->save();
