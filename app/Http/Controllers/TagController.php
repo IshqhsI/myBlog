@@ -18,4 +18,16 @@ class TagController extends Controller
     {
         return view('tag.create');
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'unique:tags,name'],
+        ]);
+
+        $tag = new Tag();
+        $tag->name = $request->name;
+        $tag->save();
+        return redirect('/tags')->with('success', 'Tag created successfully.');
+    }
 }
