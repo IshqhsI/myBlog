@@ -15,12 +15,16 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index') || request()->routeIs('posts.show') || request()->routeIs('posts.edit') || request()->routeIs('posts.create')">
                         {{ __('Posts') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index') || request()->routeIs('categories.show') || request()->routeIs('categories.edit') || request()->routeIs('categories.create')">
                         {{ __('Categories') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('comments.index')" :active="request()->routeIs('comments.index') || request()->routeIs('comments.show') || request()->routeIs('comments.edit') || request()->routeIs('comments.create')">
+                        {{ __('Comments') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
