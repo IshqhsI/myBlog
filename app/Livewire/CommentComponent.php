@@ -7,9 +7,18 @@ use App\Models\Comment;
 
 class CommentComponent extends Component
 {
+    public $search = "";
+    public $comments = [];
+
     public function render()
     {
-        $comments = Comment::all();
-        return view('livewire.comment-component', compact('comments'));
+        $this->comments = Comment::where('comment_text', 'like', '%' . $this->search . '%')->get();
+        return view('livewire.comment-component', [
+            'comments' => $this->comments
+        ]);
+    }
+
+    public function searchComment(){
+        $this->comments = Comment::where('comment_text', 'like', '%' . $this->search . '%')->get();
     }
 }
