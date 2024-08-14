@@ -32,4 +32,27 @@ class CommentController extends Controller
         return redirect('/comments')->with('success', 'Comment created successfully.');
     }
 
+    public function edit($id){
+        $comment = Comment::find($id);
+        return view('comment.edit', compact('comment'));
+    }
+
+    public function update(Request $request, $id){
+        $comment = Comment::find($id);
+        $comment->comment_text = $request->comment_text;
+        $comment->save();
+        return redirect('/comments')->with('success', 'Comment updated successfully.');
+    }
+
+    public function destroy($id){
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect('/comments')->with('success', 'Comment deleted successfully.');
+    }
+
+    public function show($id){
+        $comment = Comment::find($id);
+        return view('comment.show', compact('comment'));
+    }
+
 }
