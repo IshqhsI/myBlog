@@ -55,14 +55,12 @@
                                 class="inline-block bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-600 dark:hover:bg-green-700">
                                 Detail
                             </a>
-
-                            {{-- tombol delete --}}
-                            <form action="/tags/{{ $tag->id }}" method="post" class="inline-block">
+                            <form action="{{ route('tags.destroy', $tag->id) }}" method="post" class="inline-block">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" onclick="return confirm('Are you sure?')"
                                     class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-600 dark:hover:bg-red-700">
-                                    Delete {{ $tag->id }}
+                                    Delete
                                 </button>
                             </form>
                         </td>
