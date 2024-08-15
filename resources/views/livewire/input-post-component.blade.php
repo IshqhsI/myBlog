@@ -32,8 +32,7 @@
         <div class="mb-4" wire:ignore>
             <label for="content" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Content</label>
             <textarea id="content" name="content" rows="4"
-                class="form-control block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-600 focus:border-indigo-500 dark:focus:border-indigo-600 sm:text-sm dark:bg-gray-700 dark:text-gray-100 @error('content') border-red-500 dark:border-red-600  @enderror"
-                ></textarea>
+                class="form-control block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-600 focus:border-indigo-500 dark:focus:border-indigo-600 sm:text-sm dark:bg-gray-700 dark:text-gray-100 @error('content') border-red-500 dark:border-red-600  @enderror"></textarea>
         </div>
 
         <div class="lg:flex">
@@ -42,7 +41,8 @@
                     <label for="image"
                         class="block text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2">Image</label>
                     <input type="file" id="image" name="image" wire:model="image"
-                        class="form-control block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-600 focus:border-indigo-500 dark:focus:border-indigo-600 sm:text-sm dark:bg-gray-700 dark:text-gray-100" accept="image/*">
+                        class="form-control block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-600 focus:border-indigo-500 dark:focus:border-indigo-600 sm:text-sm dark:bg-gray-700 dark:text-gray-100"
+                        accept="image/*">
                     @error('image')
                         <span class="text-red-500 text-sm dark:text-red-400">{{ $message }}</span>
                     @enderror
@@ -61,6 +61,27 @@
                         @endforeach
                     </select>
                     @error('category_id')
+                        <span class="text-red-500 text-sm dark:text-red-400">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/2 p-0 lg:ps-3 block">
+                <div class="mb-2">
+                    {{-- Checkbox --}}
+                    <label for="tag"
+                        class="block text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2">Tag</label>
+                    <div class="w-full flex flex-wrap">
+                        @foreach ($tags as $tag)
+                            <div class="w-1/3 p-0">
+                                <input type="checkbox" class="mr-2 form-checkbox" id="tag-{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}"
+                                    wire:model="tags">
+                                <label for="tag-{{ $tag->id }}"
+                                    class="inline-block text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2">{{ $tag->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
+                    @error('tags')
                         <span class="text-red-500 text-sm dark:text-red-400">{{ $message }}</span>
                     @enderror
                 </div>

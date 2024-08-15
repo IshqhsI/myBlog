@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Str;
 
 class InputPostComponent extends Component
@@ -13,8 +14,10 @@ class InputPostComponent extends Component
     public function render()
     {
         $categories = Category::all();
+        $tags = Tag::all();
         return view('livewire.input-post-component', [
-            'categories' => $categories
+            'categories' => $categories,
+            'tags' => $tags
         ]);
     }
 
