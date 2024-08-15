@@ -37,8 +37,7 @@ class PostController extends Controller
             $request['image'] = $image->hashName();
         }
 
-
-        Post::create([
+        $post = Post::create([
             'title' => $request['title'],
             'slug' => $request['slug'],
             'content' => $request['content'],
@@ -47,6 +46,7 @@ class PostController extends Controller
             'user_id' => $request['user_id'],
         ]);
 
+        $post->tags()->sync($request->tags);
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
