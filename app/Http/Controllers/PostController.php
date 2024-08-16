@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -52,17 +54,43 @@ class PostController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::find($id);
-        return view('post.edit', compact('post'));
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('post.edit', compact('post', 'categories', 'tags'));
     }
 
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required',
+            'slug' => 'required',
+            'content' => 'required',
+            'category_id' => 'required',
+        ]);
+
+        $request['user_id'] = auth()->user()->id;
+
         $post = Post::find($id);
-        $post->update($request->all());
+        $post->update([
+            'title' => $request['title'],
+            'slug' => $request['slug'],
+            'content' => $request['content'],
+            'category_id' => $request['category_id'],
+            'user_id' => $request['user_id'],
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image->storeAs('public/posts', $image->hashName());
+            $post->update([
+                'image' => $image->hashName(),
+            ]);
+        }
+
+        $post->tags()->sync($request->tags);
         return redirect()->route('posts.index')->with('success', 'Post updated successfully');
     }
 
