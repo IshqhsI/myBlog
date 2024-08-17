@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use App\Models\Post;
+use Illuminate\Support\Facades\Cache;
 
 class TagController extends Controller
 {
@@ -60,8 +61,18 @@ class TagController extends Controller
 
     public function show($tag)
     {
-        $tag = Tag::where('name', $tag)->first();
-        $posts = $tag->posts;
+        $tag = Cache::remember('tags', 60, function () use ($tag) {
+            return Tag::where('name', $tag)->first();
+        });
+        $posts = null;
+
+        if($tag === null){
+            return redirect('/tags')->with('error', 'Tag not found.');
+        }
+
+        if($tag && $tag->posts !== null){
+            $posts = $tag->posts;
+        };
         return view('tag.show', compact('tag', 'posts'));
     }
 }
