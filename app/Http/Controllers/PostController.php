@@ -100,9 +100,7 @@ class PostController extends Controller
 
     public function show($slug)
     {
-        $post = Cache::remember('posts', 60, function () use ($slug) {
-            return Post::where('slug', $slug)->first();
-        });
+        $post = Post::where('slug', $slug)->first();
 
         if($post === null){
             return redirect('/posts')->with('error', 'Post not found.');

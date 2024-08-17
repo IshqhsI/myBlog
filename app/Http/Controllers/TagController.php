@@ -61,9 +61,7 @@ class TagController extends Controller
 
     public function show($tag)
     {
-        $tag = Cache::remember('tags', 60, function () use ($tag) {
-            return Tag::where('name', $tag)->first();
-        });
+        $tag = Tag::where('name', $tag)->first();
         $posts = null;
 
         if($tag === null){
