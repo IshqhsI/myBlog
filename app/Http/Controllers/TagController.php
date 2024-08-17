@@ -58,9 +58,9 @@ class TagController extends Controller
         return redirect('/tags')->with('success', 'Tag deleted successfully.');
     }
 
-    public function show($id)
+    public function show($tag)
     {
-        $tag = Tag::find($id);
+        $tag = Tag::where('name', $tag)->first();
         $posts = $tag->posts;
         return view('tag.show', compact('tag', 'posts'));
     }
