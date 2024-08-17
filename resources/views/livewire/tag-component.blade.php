@@ -51,7 +51,7 @@
                                 class="inline-block bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-yellow-600 dark:hover:bg-yellow-700">
                                 Edit
                             </a>
-                            <a href="/tags/{{ $tag->name }}"
+                            <a href="/tags/{{ $tag->id }}"
                                 class="inline-block bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-600 dark:hover:bg-green-700">
                                 Detail
                             </a>
