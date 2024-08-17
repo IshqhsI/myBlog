@@ -6,13 +6,16 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
     //
     public function index()
     {
-        $posts = Post::all();
+        $posts = Cache::remember('posts', 60, function () {
+            return Post::latest()->get();
+        });
         return view('post.index', compact('posts'));
     }
 
@@ -95,9 +98,16 @@ class PostController extends Controller
     }
 
 
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::find($id);
+        $post = Cache::remember('posts', 60, function () use ($slug) {
+            return Post::where('slug', $slug)->first();
+        });
+
+        if($post === null){
+            return redirect('/posts')->with('error', 'Post not found.');
+        }
+
         return view('post.show', compact('post'));
     }
 
