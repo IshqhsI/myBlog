@@ -23,7 +23,7 @@
                 </header>
 
                 <!-- Main Content -->
-                <section class="space-y-6 mt-6 text-gray-700 dark:text-gray-300">
+                <section class="space-y-6 mt-6 text-gray-700 dark:text-gray-300" id="content">
                     {!! $post->content !!}
                 </section>
 

@@ -1,0 +1,128 @@
+#content img {
+    width: 50%;
+    height: auto;
+}
+
+#content iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+#content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#content th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#content th {
+    background-color: #f2f2f2;
+}
+
+#content tr:hover {
+    background-color: #f5f5f5;
+}
+
+#content a {
+    color: #0070f3;
+    text-decoration: none;
+}
+
+#content a:hover {
+    text-decoration: underline;
+}
+
+#content h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#content p {
+    margin-bottom: 10px;
+}
+
+#content ul,
+ol {
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+#content ul li,
+ol li {
+    margin-bottom: 5px;
+}
+
+#content blockquote {
+    margin: 0 0 10px;
+    padding: 10px;
+    border-left: 4px solid #ccc;
+}
+
+#content pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#content code {
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+#content pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+#content table code {
+    background-color: transparent;
+    padding: 0;
+}
+
+#content table td code {
+    background-color: transparent;
+    padding: 0;
+}
+
+#content table th code {
+    background-color: transparent;
+    padding: 0;
+}
+
+#content table td:last-child code {
+    white-space: nowrap;
+}
+
+#content table th:last-child code {
+    white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+    #content img {
+        width: 75%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    #content table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    #content img {
+        width: 100%;
+        height: auto;
+    }
+}

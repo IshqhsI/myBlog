@@ -18,6 +18,9 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body class="font-sans antialiased">
