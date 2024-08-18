@@ -24,7 +24,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="bg-gray-100 dark:bg-gray-900" style="min-height: calc(100vh - 64px)">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
@@ -40,7 +40,9 @@
         <main>
             {{ $slot }}
         </main>
+
     </div>
+    @include('layouts.footer')
 
     @livewireScripts
     <script>
