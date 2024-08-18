@@ -15,8 +15,11 @@
                         <span class="mx-2">•</span>
                         <span>{{ $post->created_at->format('F j, Y, g:i a') }}</span>
                     </p>
-                    <img src="{{ asset('storage/posts/' . $post->image) }}"
-                        class="w-full aspect-video h-auto rounded-lg object-cover shadow-md" alt="{{ $post->title }}">
+                    @if ($post->image)
+                        <img src="{{ asset('storage/posts/' . $post->image) }}"
+                            class="w-full aspect-video h-auto rounded-lg object-cover shadow-md"
+                            alt="{{ $post->title }}">
+                    @endif
                 </header>
 
                 <!-- Main Content -->
