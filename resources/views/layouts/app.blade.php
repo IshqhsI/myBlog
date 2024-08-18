@@ -48,8 +48,89 @@
             toolbar: 'insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
             branding: false,
             skin: 'oxide-dark',
-            content_css: 'dark'
-        })
+            content_css: 'dark',
+            images_upload_url: '/upload_image',
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            file_picker_callback: function(cb, value, meta) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.onchange = function() {
+                    var file = this.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                        var id = 'blobid' + (new Date()).getTime();
+                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                        var base64 = reader.result.split(',')[1];
+                        var blobInfo = blobCache.create(id, file, base64);
+                        blobCache.add(blobInfo);
+
+                        // Retrieve the CSRF token from the meta tag
+                        var token = document.querySelector('meta[name="csrf-token"]').getAttribute(
+                            'content');
+
+                        // Create FormData object to send file
+                        var formData = new FormData();
+                        formData.append('file', file);
+
+                        // Send the file with XMLHttpRequest
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', '/upload_image', true);
+                        xhr.setRequestHeader('X-CSRF-TOKEN', token); // Set CSRF token header
+
+                        xhr.onload = function() {
+                            if (xhr.status === 200) {
+                                var response = JSON.parse(xhr.responseText);
+                                cb(response.location, {
+                                    title: file.name
+                                });
+                            } else {
+                                console.error('Upload failed:', xhr.statusText);
+                            }
+                        };
+
+                        xhr.onerror = function() {
+                            console.error('Upload failed:', xhr.statusText);
+                        };
+
+                        xhr.send(formData);
+                    };
+                    reader.readAsDataURL(file);
+                };
+                input.click();
+            }
+        });
+
+        // tinymce.init({
+        //     selector: 'textarea#content', // ganti dengan selector yang sesuai
+        //     plugins: 'image ',
+        //     toolbar: 'image',
+        //     images_upload_url: '/upload_image',
+        //     automatic_uploads: true,
+        //     file_picker_types: 'image',
+        //     file_picker_callback: function(cb, value, meta) {
+        //         var input = document.createElement('input');
+        //         input.setAttribute('type', 'file');
+        //         input.setAttribute('accept', 'image/*');
+        //         input.onchange = function() {
+        //             var file = this.files[0];
+        //             var reader = new FileReader();
+        //             reader.onload = function() {
+        //                 var id = 'blobid' + (new Date()).getTime();
+        //                 var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+        //                 var base64 = reader.result.split(',')[1];
+        //                 var blobInfo = blobCache.create(id, file, base64);
+        //                 blobCache.add(blobInfo);
+        //                 cb(blobInfo.blobUri(), {
+        //                     title: file.name
+        //                 });
+        //             };
+        //             reader.readAsDataURL(file);
+        //         };
+        //         input.click();
+        //     }
+        // });
     </script>
 </body>
 

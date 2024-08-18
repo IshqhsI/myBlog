@@ -29,4 +29,7 @@ Route::resource('categories', CategoryController::class)->name('index', 'categor
 Route::resource('posts', PostController::class)->name('index', 'posts.index')->middleware('auth');
 Route::resource('comments', CommentController::class)->name('index', 'comments.index')->middleware('auth');
 Route::resource('tags', TagController::class)->name('index', 'tags.index')->middleware('auth');
+
+Route::post('/upload_image', [PostController::class, 'upload'])->name('upload');
+
 require __DIR__ . '/auth.php';
