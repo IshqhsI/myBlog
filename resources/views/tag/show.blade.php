@@ -46,7 +46,7 @@
                                     </div>
                                     <div
                                         class="p-4 border-t border-gray-200 dark:border-gray-600 flex justify-between items-center">
-                                        <a href="/posts/{{ $post->slug }}"
+                                        <a href="{{ route('posts.show', $post->slug) }}"
                                             class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-300">Baca
                                             Selengkapnya</a>
                                         @if (auth()->check() && auth()->user()->can('edit', $post))
