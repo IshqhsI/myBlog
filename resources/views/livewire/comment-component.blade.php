@@ -20,7 +20,7 @@
 
     <div class="flex">
         <div class="w-1/2">
-            <a href="/comments/create"
+            <a href="{{ route('comments.create') }}"
                 class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add
                 Comment</a>
         </div>
@@ -53,17 +53,17 @@
                             <td class="py-3 px-6 text-left">{{ $comment->user->name }}</td>
                             <td class="py-3 px-6 text-left">{{ $comment->approved }}</td>
                             <td class="py-3 px-6 text-left">
-                                <a href="/comments/{{ $comment->id }}/edit"
+                                <a href="{{ route('comments.edit', $comment->id) }}"
                                     class="inline-block bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-yellow-600 dark:hover:bg-yellow-700">
                                     Edit
                                 </a>
-                                <a href="/comments/{{ $comment->id }}"
+                                <a href="{{ route('comments.show', $comment->id) }}"
                                     class="inline-block bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-600 dark:hover:bg-green-700">
                                     Detail
                                 </a>
 
                                 {{-- tombol delete --}}
-                                <form action="/comments/{{ $comment->id }}" method="post" class="inline-block">
+                                <form action="{{ route('comments.destroy', $comment->id) }}" method="post" class="inline-block">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" onclick="return confirm('Are you sure?')"
