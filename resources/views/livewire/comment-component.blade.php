@@ -25,8 +25,7 @@
                 Comment</a>
         </div>
         <div class="w-1/2 text-end">
-            {{-- stiling form --}}
-            <input type="text" class="form-control w-1/2 rounded p-2 border-blue-600" placeholder="Search" wire:keydown="searchComment" wire:model="search">
+            <input type="text" class="form-control w-full md:w-1/2 rounded p-2 border-blue-600" placeholder="Search" wire:keydown="searchComment" wire:model="search">
         </div>
     </div>
 
