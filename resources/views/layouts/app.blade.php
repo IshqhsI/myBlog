@@ -12,8 +12,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <script src="https://cdn.tiny.cloud/1/bs0uhzbg825hfqjad15k5cakhq04x1nlrblt797ii47kbhm4/tinymce/5/tinymce.min.js"
-        referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/wd88eejdy66kgvd8kfkhcj4azosk0futrsfttp59mtxuhv4l/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
