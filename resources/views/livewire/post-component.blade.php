@@ -1,5 +1,4 @@
 <div class="w-full">
-    {{-- Alert hilang --}}
     @session('success')
         <div class="relative bg-teal-100 border-t-4 border-teal-500 rounded text-teal-900 px-4 py-3 shadow-md my-3 dark:bg-teal-200 dark:text-teal-900"
             role="alert">
@@ -20,7 +19,7 @@
 
     <div class="flex">
         <div class="w-1/2">
-            <a href="/posts/create"
+            <a href="{{ route('posts.create') }}"
                 class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add
                 Post</a>
         </div>
@@ -58,15 +57,15 @@
                                 <td class="py-3 px-6 text-left">{{ $post->category->name }}</td>
                                 <td class="py-3 px-6 text-left">{{ $post->user->name }}</td>
                                 <td class="py-3 px-6 text-left">
-                                    <a href="/posts/{{ $post->id }}/edit"
+                                    <a href="{{ route('posts.edit', $post->id) }}"
                                         class="inline-block bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-yellow-600 dark:hover:bg-yellow-700">
                                         Edit
                                     </a>
-                                    <a href="/posts/{{ $post->slug }}"
+                                    <a href="{{ route('posts.show', $post->slug) }}"
                                         class="inline-block bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-600 dark:hover:bg-green-700">
                                         Detail
                                     </a>
-                                    <form action="/posts/{{ $post->id }}" method="post" class="inline-block">
+                                    <form action="{{ route('posts.destroy' ,$post->id) }}" method="post" class="inline-block">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" onclick="return confirm('Are you sure?')"
