@@ -33,7 +33,7 @@
                     <div class="p-6">
                         <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Post:</h2>
                         <div class="text-gray-900 dark:text-gray-100 mb-2 text-xl font-extrabold">
-                            {{ $comment->post->title }}
+                            <a href="{{ route('posts.show', $comment->post->slug) }}" class=""> {{ $comment->post->title }} </a>
                         </div>
                         {{-- Post Content --}}
                         <div class="text-gray-900 dark:text-gray-100">

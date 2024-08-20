@@ -33,7 +33,7 @@
                     <p class="text-gray-700 dark:text-gray-300 text-base md:text-lg mt-4 font-semibold">Tags:</p>
                     <div class="flex flex-wrap gap-2 mt-3 mb-6">
                         @foreach ($post->tags as $tag)
-                            <a href="/tags/{{ $tag->name }}"
+                            <a href="{{ route('tags.show', $tag->name) }}"
                                 class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full px-4 py-2 text-sm md:text-base font-semibold hover:bg-gray-300 dark:hover:bg-gray-600">{{ $tag->name }}</a>
                         @endforeach
 
