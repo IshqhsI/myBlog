@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/test', function () {
     return view('index');
@@ -29,11 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('categories', CategoryController::class)->name('index', 'categories.index')->middleware('auth');
-Route::resource('posts', PostController::class)->name('index', 'posts.index')->middleware('auth');
-Route::resource('comments', CommentController::class)->name('index', 'comments.index')->middleware('auth');
-Route::resource('tags', TagController::class)->name('index', 'tags.index')->middleware('auth');
-
-Route::post('/upload_image', [PostController::class, 'upload'])->name('upload');
+Route::middleware('superadmin')->group(function(){
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/admin/categories', CategoryController::class)->name('index', 'categories.index');
+    Route::resource('/admin/posts', PostController::class)->name('index', 'posts.index');
+    Route::resource('/admin/comments', CommentController::class)->name('index', 'comments.index');
+    Route::resource('/admin/tags', TagController::class)->name('index', 'tags.index');
+    Route::post('/upload_image', [PostController::class, 'upload'])->name('upload');
+});
 
 require __DIR__ . '/auth.php';
