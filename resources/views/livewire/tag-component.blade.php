@@ -20,7 +20,7 @@
 
     <div class="flex">
         <div class="w-1/2">
-            <a href="/tags/create"
+            <a href="{{ route('tags.create') }}"
                 class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add
                 Tag</a>
         </div>
@@ -46,11 +46,11 @@
                         <td class="py-3 px-6 text-left">{{ $i + 1 }}</td>
                         <td class="py-3 px-6 text-left">{{ $tag->name }}</td>
                         <td class="py-3 px-6 text-left">
-                            <a href="/tags/{{ $tag->id }}/edit"
+                            <a href="{{ route('tags.edit', $tag->id) }}"
                                 class="inline-block bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-yellow-600 dark:hover:bg-yellow-700">
                                 Edit
                             </a>
-                            <a href="/tags/{{ $tag->name }}"
+                            <a href="{{ route('tags.show', $tag->name) }}"
                                 class="inline-block bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-600 dark:hover:bg-green-700">
                                 Detail
                             </a>
