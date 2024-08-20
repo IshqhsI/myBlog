@@ -20,7 +20,7 @@
 
     <div class="flex">
         <div class="w-1/2">
-            <a href="/categories/create"
+            <a href="{{ route('categories.create') }}"
                 class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add
                 Category</a>
         </div>
@@ -47,17 +47,17 @@
                     <td class="py-3 px-6 text-left">{{ $category->name }}</td>
                     <td class="py-3 px-6 text-left">{{ $category->description }}</td>
                     <td class="py-3 px-6 text-left">
-                        <a href="/categories/{{ $category->id }}/edit"
+                        <a href="{{ route('categories.edit', $category->id) }}"
                             class="inline-block bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-yellow-600 dark:hover:bg-yellow-700">
                             Edit
                         </a>
-                        <a href="/categories/{{ $category->id }}"
+                        <a href="{{ route('categories.show', $category->id) }}"
                             class="inline-block bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-600 dark:hover:bg-green-700">
                             Detail
                         </a>
 
                         {{-- tombol delete --}}
-                        <form action="/categories/{{ $category->id }}" method="post" class="inline-block">
+                        <form action="{{ route('categories.destroy', $category->id) }}" method="post" class="inline-block">
                             @csrf
                             @method('delete')
                             <button type="submit" onclick="return confirm('Are you sure?')"
