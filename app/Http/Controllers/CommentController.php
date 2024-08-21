@@ -29,7 +29,7 @@ class CommentController extends Controller
         $comment->comment_text = $request->comment_text;
         $comment->save();
 
-        return redirect('/comments')->with('success', 'Comment created successfully.');
+        return redirect()->route('comments.index')->with('success', 'Comment created successfully.');
     }
 
     public function edit($id){
@@ -45,13 +45,13 @@ class CommentController extends Controller
         $comment = Comment::find($id);
         $comment->comment_text = $request->comment_text;
         $comment->save();
-        return redirect('/comments')->with('success', 'Comment updated successfully.');
+        return redirect()->route('comments.index')->with('success', 'Comment updated successfully.');
     }
 
     public function destroy($id){
         $comment = Comment::find($id);
         $comment->delete();
-        return redirect('/comments')->with('success', 'Comment deleted successfully.');
+        return redirect()->route('comments.index')->with('success', 'Comment deleted successfully.');
     }
 
     public function show($id){
