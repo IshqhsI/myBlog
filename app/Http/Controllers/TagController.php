@@ -30,7 +30,7 @@ class TagController extends Controller
         $tag = new Tag();
         $tag->name = $request->name;
         $tag->save();
-        return redirect('/tags')->with('success', 'Tag created successfully.');
+        return redirect()->route('tags.index')->with('success', 'Tag created successfully.');
     }
 
     public function edit($id)
@@ -49,14 +49,14 @@ class TagController extends Controller
         $tag->name = $request->name;
         $tag->save();
 
-        return redirect('/tags')->with('success', 'Tag updated successfully.');
+        return redirect()->route('tags.index')->with('success', 'Tag updated successfully.');
     }
 
     public function destroy($id)
     {
         $tag = Tag::find($id);
         $tag->delete();
-        return redirect('/tags')->with('success', 'Tag deleted successfully.');
+        return redirect()->route('tags.index')->with('success', 'Tag deleted successfully.');
     }
 
     public function show($tag)
