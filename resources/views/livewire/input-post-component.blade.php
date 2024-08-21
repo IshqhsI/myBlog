@@ -1,6 +1,6 @@
 <div class="mx-auto bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
     <h5 class="text-lg font-medium mb-6 dark:text-gray-100 text-gray-700">Add Post</h5>
-    <form action="/posts" method="post" class="space-y-6" enctype="multipart/form-data">
+    <form action="{{ route('posts.store') }}" method="post" class="space-y-6" enctype="multipart/form-data">
         @csrf
         <div class="lg:flex">
             <div class="w-full lg:w-1/2">

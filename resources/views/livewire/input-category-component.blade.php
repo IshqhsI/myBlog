@@ -1,6 +1,6 @@
 <div class="mx-auto bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
     <h5 class="text-lg font-medium mb-6 dark:text-gray-100 text-gray-700">Add Category</h5>
-    <form action="/categories" method="post" class="space-y-6">
+    <form action="{{ route('categories.store') }}" method="post" class="space-y-6">
         @csrf
         <div class="mb-4 ">
             <label for="name" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Name</label>
