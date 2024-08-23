@@ -25,6 +25,14 @@ Route::get('/contact', function(){
     return view('contact');
 })->name('contact');
 
+Route::get('/posts', function(){
+    return view('posts');
+})->name('posts');
+
+Route::get('/categories', function(){
+    return view('categories');
+})->name('categories');
+
 Route::get('/test', function () {
     return view('index');
 });
