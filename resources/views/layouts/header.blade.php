@@ -6,7 +6,7 @@
                 <a href="{{ route('home') }}"
                 class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('home') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Home</a>
                 <a href="{{ route('posts') }}"
-                    class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300">Posts</a>
+                    class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('posts') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Posts</a>
                 <div class="relative group">
                     <a @mouseover="isCategoriesOpen = true" href="{{ route('categories') }}"
                         class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">
