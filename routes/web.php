@@ -29,6 +29,10 @@ Route::get('/posts', function(){
     return view('posts');
 })->name('posts');
 
+Route::get('/posts/{post}', function(){
+    return view('post');
+});
+
 Route::get('/categories', function(){
     return view('categories');
 })->name('categories');
