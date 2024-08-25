@@ -37,6 +37,10 @@ Route::get('/categories', function(){
     return view('categories');
 })->name('categories');
 
+Route::get('/categories/{category}', function(){
+    return view('category');
+});
+
 Route::get('/test', function () {
     return view('index');
 });
