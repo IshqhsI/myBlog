@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <main class="mx-auto px-4 py-6 lg:px-8">
+    <main class="mx-auto py-2 lg:py-6 lg:px-8">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Main Content Column (75%) -->
             <div class="lg:w-3/4 px-4 py-4 lg:px-2 lg:pr-0">
@@ -15,9 +15,9 @@
                 </section>
 
                 <!-- Category Cards Grid -->
-                <div class="flex flex-wrap">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- Category Card 1 -->
-                    <div class="w-full sm:w-1/2 lg:w-1/3 pl-0 px-2 py-2 mb-8">
+                    <div class="">
                         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                             <img src="https://via.placeholder.com/400x200" alt="Category 1 Image"
                                 class="w-full h-40 object-cover">
@@ -32,7 +32,7 @@
                     </div>
 
                     <!-- Category Card 2 -->
-                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 py-2 mb-8">
+                    <div class="w-full">
                         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                             <img src="https://via.placeholder.com/400x200" alt="Category 2 Image"
                                 class="w-full h-40 object-cover">
@@ -47,7 +47,7 @@
                     </div>
 
                     <!-- Category Card 3 -->
-                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 py-2 pr-0 mb-8">
+                    <div class="w-full">
                         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                             <img src="https://via.placeholder.com/400x200" alt="Category 3 Image"
                                 class="w-full h-40 object-cover">
