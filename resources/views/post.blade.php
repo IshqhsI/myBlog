@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('content')
-    <main class="max-w-7xl mx-auto px-4 py-4 lg:px-6 lg:py-6">
+    <main class="mx-auto py-2 px-3 lg:py-6 lg:px-8">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Main Content (Left Column) -->
-            <div class="lg:w-3/4 px-4 py-4 lg:px-2 lg:pr-0">
+            <div class="lg:w-3/4 px-4 py-4 lg:px-8 lg:pr-0">
                 <article class="prose prose-lg lg:prose-xl dark:prose-dark">
                     <header>
                         <h1 class="text-3xl md:text-4xl font-bold mb-4">This is a Dummy Blog Post Title</h1>
