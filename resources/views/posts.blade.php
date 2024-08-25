@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
-    <main class="mx-auto px-4 py-6 lg:px-8">
+    <main class="mx-auto py-2 lg:py-6 lg:px-8">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Main Content Column (75%) -->
             <div class="lg:w-3/4 px-4 py-4 lg:px-2 lg:pr-0">
                 <!-- Introduction or Header Section -->
-                <section class="bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-8">
+                <section class="bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-6">
                     <div class="p-6">
                         <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">Posts</h1>
                         <p class="text-gray-600 dark:text-gray-400 mb-6">Explore our latest posts. Find insights, stories,
@@ -15,66 +15,100 @@
                 </section>
 
                 <!-- Category Tabs -->
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <button class="category-button px-4 py-2 bg-indigo-600 text-white rounded-lg focus:outline-none">Category
+                <div class="flex flex-row lg:flex-wrap gap-2 mb-4 overflow-scroll lg:overflow-hidden" style="scrollbar-color: transparent transparent">
+                    <button id="all"
+                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none">
+                        All Posts</button>
+                    <button id="web-development"
+                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none">Category
                         1</button>
-                    <button
-                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none hover:bg-gray-300">Category
+                    <button id="javascript"
+                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none ">Category
                         2</button>
-                    <button
-                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none hover:bg-gray-300">Category
+                    <button id="css"
+                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none ">Category
                         3</button>
+                    <button
+                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none ">Category
+                        4</button>
+                    <button
+                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none ">Category
+                        5</button>
+                    <button
+                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none ">Category
+                        6</button>
                 </div>
 
                 <!-- Post Cards Grid -->
-                <div class="flex flex-wrap">
-                    <!-- Post Card 1 -->
-                    <article class="flex flex-col rounded-lg shadow-lg w-full md:w-1/2 lg:w-1/3 pl-0 px-2 py-2">
-                        <div class="bg-white dark:bg-gray-800">
-                            <img src="https://via.placeholder.com/400x200" alt="Post 2 Image"
-                                class="w-full h-40 object-cover rounded-t-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    @for ($i = 0; $i < 3; $i++)
+                        <!-- Post Card -->
+                        <div class="post-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-95"
+                            data-category="web-development">
+                            <img src="https://via.placeholder.com/400x200" alt="Post image"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
-                                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Post Title 1</h2>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">Brief description of the post. Lorem ipsum
-                                    dolor sit amet consectetur.</p>
-                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Read More</a>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Getting Started with
+                                    Tailwind
+                                    CSS</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">Learn how to quickly set up and use
+                                    Tailwind
+                                    CSS in
+                                    your projects. Discover its utility-first approach and how it can streamline your
+                                    development
+                                    workflow.</p>
+                                <a href="#"
+                                    class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold">Read
+                                    more →</a>
                             </div>
                         </div>
-                    </article>
-
-                    <!-- Post Card 2 -->
-                    <article class="flex flex-col rounded-lg shadow-lg w-full md:w-1/2 lg:w-1/3 px-2 py-2">
-                        <div class="bg-white dark:bg-gray-800">
-                            <img src="https://via.placeholder.com/400x200" alt="Post 2 Image"
-                                class="w-full h-40 object-cover rounded-t-lg">
+                        <!-- Post Card -->
+                        <div class="post-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-95"
+                            data-category="javascript">
+                            <img src="https://via.placeholder.com/400x200" alt="Post image"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
-                                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Post Title 2</h2>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">Brief description of the post. Lorem ipsum
-                                    dolor sit amet consectetur.</p>
-                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Read More</a>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Understanding
+                                    JavaScript
+                                    Closures</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">Explore the concept of closures in
+                                    JavaScript,
+                                    a
+                                    powerful feature that allows functions to access variables from their parent scope, even
+                                    after the
+                                    parent function has finished executing.</p>
+                                <a href="#"
+                                    class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold">Read
+                                    more →</a>
                             </div>
                         </div>
-                    </article>
-
-                    <!-- Post Card 3 -->
-                    <article class="flex flex-col rounded-lg shadow-lg w-full md:w-1/2 lg:w-1/3 px-2 py-2 pr-0">
-                        <div class="bg-white dark:bg-gray-800">
-                            <img src="https://via.placeholder.com/400x200" alt="Post 2 Image"
-                                class="w-full h-40 object-cover rounded-t-lg">
+                        <!-- Post Card -->
+                        <div class="post-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-95"
+                            data-category="css">
+                            <img src="https://via.placeholder.com/400x200" alt="Post image"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
-                                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Post Title 3</h2>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">Brief description of the post. Lorem ipsum
-                                    dolor sit amet consectetur.</p>
-                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Read More</a>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">A Guide to Modern
+                                    CSS
+                                    Grid
+                                    Layout</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">Learn the ins and outs of CSS Grid Layout,
+                                    a
+                                    powerful
+                                    tool for creating complex and responsive grid-based layouts with ease. Discover
+                                    practical
+                                    examples
+                                    and tips to enhance your designs.</p>
+                                <a href="#"
+                                    class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold">Read
+                                    more →</a>
                             </div>
                         </div>
-                    </article>
-
-                    <!-- Additional Post Cards can be added here -->
+                    @endfor
                 </div>
 
                 <!-- Tags -->
-                <div class="flex flex-wrap gap-2 mt-6">
+                <div class="flex flex-wrap mx-auto justify-center text-center lg:justify-normal gap-3 mt-4">
                     <a href="#"
                         class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600">Tag
                         1</a>
@@ -116,4 +150,25 @@
     </main>
 
     @include('layouts.footer')
+
+    <script>
+        document.querySelectorAll('.category-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.id;
+                document.querySelectorAll('.category-button').forEach(btn => btn.classList.remove(
+                    'bg-indigo-600', 'text-white'));
+                button.classList.add('bg-indigo-600', 'text-white');
+                document.querySelectorAll('.post-card').forEach(post => {
+                    if (category === 'all' || post.dataset.category === category) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Initialize with 'all' posts
+        document.getElementById('all').click();
+    </script>
 @endsection
