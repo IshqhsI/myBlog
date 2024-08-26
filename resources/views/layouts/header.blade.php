@@ -4,7 +4,7 @@
             <a href="#" class="text-3xl font-bold text-indigo-600 dark:text-indigo-400">IshqCode</a>
             <div class="hidden md:flex items-center space-x-6">
                 <a href="{{ route('home') }}"
-                class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('home') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Home</a>
+                    class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('home') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Home</a>
                 <a href="{{ route('posts') }}"
                     class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('posts') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('posts.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Posts</a>
                 <div class="relative group">
@@ -34,7 +34,11 @@
                     class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('about') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">About</a>
                 <a href="{{ route('contact') }}"
                     class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('contact') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Contact</a>
-
+                {{-- dashboard menu for admin --}}
+                @role('superadmin')
+                    <a href="{{ route('dashboard') }}"
+                        class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300">Dashboard</a>
+                @endrole
             </div>
             <div class="flex items-center space-x-4">
                 <form class="hidden md:flex flex-grow max-w-md">
@@ -64,10 +68,12 @@
             x-transition:leave-end="opacity-0 scale-95">
             <a href="{{ route('home') }}"
                 class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('home') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Home</a>
-            <a href="{{ route('posts') }}" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('posts') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('posts.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Posts</a>
+            <a href="{{ route('posts') }}"
+                class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('posts') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('posts.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Posts</a>
             <div class="relative">
-                <a @click="isCategoriesOpen = !isCategoriesOpen" aria-label="Toggle Categories" href="{{ route('categories') }}"
-                    class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 {{ request()->routeIs('categories') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('categories.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}" >
+                <a @click="isCategoriesOpen = !isCategoriesOpen" aria-label="Toggle Categories"
+                    href="{{ route('categories') }}"
+                    class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 {{ request()->routeIs('categories') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('categories.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">
                     Categories
                 </a>
                 <div x-show="isCategoriesOpen" @click.outside="isCategoriesOpen = false"
@@ -87,6 +93,11 @@
                 class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('about') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">About</a>
             <a href="{{ route('contact') }}"
                 class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('contact') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Contact</a>
+            {{-- dashboard menu for admin --}}
+            @role('superadmin')
+                <a href="{{ route('dashboard') }}"
+                    class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">Dashboard</a>
+            @endrole
         </div>
     </nav>
 </header>
