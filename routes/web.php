@@ -31,7 +31,7 @@ Route::get('/posts', function(){
 
 Route::get('/posts/{post}', function(){
     return view('post');
-});
+})->name('posts.show');
 
 Route::get('/categories', function(){
     return view('categories');
@@ -39,7 +39,7 @@ Route::get('/categories', function(){
 
 Route::get('/categories/{category}', function(){
     return view('category');
-});
+})->name('categories.show');
 
 Route::get('/test', function () {
     return view('index');
