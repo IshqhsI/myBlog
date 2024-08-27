@@ -15,109 +15,43 @@
                 </section>
 
                 <!-- Category Tabs -->
-                <div class="flex flex-row lg:flex-wrap gap-2 mb-4 overflow-scroll lg:overflow-hidden" style="scrollbar-color: transparent transparent">
+                <div class="flex flex-row lg:flex-wrap gap-2 mb-4 overflow-scroll lg:overflow-hidden"
+                    style="scrollbar-color: transparent transparent">
                     <button id="all"
                         class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none">
                         All Posts</button>
-                    <button id="web-development"
-                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none">Category
-                        1</button>
-                    <button id="javascript"
-                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none ">Category
-                        2</button>
-                    <button id="css"
-                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none ">Category
-                        3</button>
-                    <button
-                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none ">Category
-                        4</button>
-                    <button
-                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none ">Category
-                        5</button>
-                    <button
-                        class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none ">Category
-                        6</button>
+                    @foreach ($categories as $i => $category)
+                        <button id="{{ $category->name }}"
+                            class="category-button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus:outline-none">{{ $category->name }}</button>
+                    @endforeach
                 </div>
 
                 <!-- Post Cards Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    @for ($i = 0; $i < 3; $i++)
+                    @foreach ($posts as $i => $post)
                         <!-- Post Card -->
                         <div class="post-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-95"
-                            data-category="web-development">
-                            <img src="https://via.placeholder.com/400x200" alt="Post image"
+                            data-category="{{ $post->category->name }}">
+                            <img src="{{ asset('storage/posts/' . $post->image) }}" alt="Post image"
                                 class="w-full h-48 object-cover">
                             <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Getting Started with
-                                    Tailwind
-                                    CSS</h3>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">Learn how to quickly set up and use
-                                    Tailwind
-                                    CSS in
-                                    your projects. Discover its utility-first approach and how it can streamline your
-                                    development
-                                    workflow.</p>
-                                <a href="#"
+                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{{ $post->title }}
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">{!! \Illuminate\Support\Str::words(strip_tags($post->content), 30, '...') !!}</p>
+                                <a href="{{ route('post.show', $post->slug) }}"
                                     class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold">Read
                                     more →</a>
                             </div>
                         </div>
-                        <!-- Post Card -->
-                        <div class="post-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-95"
-                            data-category="javascript">
-                            <img src="https://via.placeholder.com/400x200" alt="Post image"
-                                class="w-full h-48 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Understanding
-                                    JavaScript
-                                    Closures</h3>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">Explore the concept of closures in
-                                    JavaScript,
-                                    a
-                                    powerful feature that allows functions to access variables from their parent scope, even
-                                    after the
-                                    parent function has finished executing.</p>
-                                <a href="#"
-                                    class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold">Read
-                                    more →</a>
-                            </div>
-                        </div>
-                        <!-- Post Card -->
-                        <div class="post-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-95"
-                            data-category="css">
-                            <img src="https://via.placeholder.com/400x200" alt="Post image"
-                                class="w-full h-48 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">A Guide to Modern
-                                    CSS
-                                    Grid
-                                    Layout</h3>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">Learn the ins and outs of CSS Grid Layout,
-                                    a
-                                    powerful
-                                    tool for creating complex and responsive grid-based layouts with ease. Discover
-                                    practical
-                                    examples
-                                    and tips to enhance your designs.</p>
-                                <a href="#"
-                                    class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold">Read
-                                    more →</a>
-                            </div>
-                        </div>
-                    @endfor
+                    @endforeach
                 </div>
 
                 <!-- Tags -->
                 <div class="flex flex-wrap mx-auto justify-center text-center lg:justify-normal gap-3 mt-4">
-                    <a href="#"
-                        class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600">Tag
-                        1</a>
-                    <a href="#"
-                        class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600">Tag
-                        2</a>
-                    <a href="#"
-                        class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600">Tag
-                        3</a>
+                    @foreach ($tags as $i => $tag)
+                        <a href="{{ route('tag.show', $tag->name) }}"
+                            class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600">{{ $tag->name }}</a>
+                    @endforeach
                 </div>
             </div>
 
@@ -149,6 +83,7 @@
         </div>
     </main>
 
+    <!-- Footer -->
     @include('layouts.footer')
 
     <script>
