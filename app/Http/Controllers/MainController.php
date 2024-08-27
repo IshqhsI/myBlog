@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
@@ -18,7 +19,8 @@ class MainController extends Controller
     public function posts(){
         $posts = Post::all();
         $categories = Category::all();
-        return view('posts', compact('posts', 'categories'));
+        $tags = Tag::all();
+        return view('posts', compact('posts', 'categories', 'tags'));
     }
 
     public function categories(){

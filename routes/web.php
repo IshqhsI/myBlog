@@ -25,6 +25,8 @@ Route::get('/posts/{post}', [MainController::class, 'post'])->name('post.show');
 Route::get('/categories', [MainController::class, 'categories'])->name('categories');
 Route::get('/categories/{category}', [MainController::class, 'category'])->name('category.show');
 
+Route::get('/tags/{tag}', [TagController::class, 'show'])->name('tag.show');
+
 Route::get('/test', function () {
     return view('index');
 });
