@@ -12,34 +12,18 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MainController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [MainController::class, 'home'])->name('home');
 
-Route::get('/about', function(){
-    return view('about');
-})->name('about');
+Route::get('/about', [MainController::class, 'about'])->name('about');
+Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 
-Route::get('/contact', function(){
-    return view('contact');
-})->name('contact');
+Route::get('/posts', [MainController::class, 'posts'])->name('posts');
+Route::get('/posts/{post}', [MainController::class, 'post'])->name('post.show');
 
-Route::get('/posts', function(){
-    return view('posts');
-})->name('posts');
-
-Route::get('/posts/{post}', function(){
-    return view('post');
-})->name('posts.show');
-
-Route::get('/categories', function(){
-    return view('categories');
-})->name('categories');
-
-Route::get('/categories/{category}', function(){
-    return view('category');
-})->name('categories.show');
+Route::get('/categories', [MainController::class, 'categories'])->name('categories');
+Route::get('/categories/{category}', [MainController::class, 'category'])->name('category.show');
 
 Route::get('/test', function () {
     return view('index');
