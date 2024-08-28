@@ -6,35 +6,27 @@
             <div class="lg:w-3/4 px-4 py-4 lg:px-8 lg:pr-0">
                 <article class="prose prose-lg lg:prose-xl dark:prose-dark">
                     <header>
-                        <h1 class="text-3xl md:text-4xl font-bold mb-4">This is a Dummy Blog Post Title</h1>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-4">{{ $post->title }}</h1>
                         <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm md:text-base">
-                            <small>Published on August 15, 2024 by John Doe</small>
+                            <small>Posted on {{ $post->created_at->format('j F Y, g:i a') }} by
+                                {{ $post->user->name }}</small>
                         </p>
-                        <img src="https://via.placeholder.com/800x400" class="w-full h-auto rounded-lg mb-6" alt="Dummy Image">
+                        <img src="{{ asset('storage/posts/' . $post->image) }}" class="w-full h-auto rounded-lg mb-6"
+                            alt="Dummy Image">
                     </header>
 
-                    <section>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm md:text-base leading-relaxed text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum
-                            vestibulum. Cras venenatis euismod malesuada.</p>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm md:text-base  leading-relaxed text-justify">Praesent tristique magna sit amet purus gravida quis blandit turpis cursus. Suspendisse potenti.
-                            Nullam vehicula ipsum a arcu cursus vitae congue mauris. Ut tristique et egestas quis ipsum
-                            suspendisse ultrices gravida dictum fusce.</p>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm md:text-base  leading-relaxed text-justify">Morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut sem viverra aliquet
-                            eget sit amet. In est ante in nibh mauris cursus mattis molestie a. Non sodales neque sodales ut
-                            etiam sit amet nisl purus in mollis. Aliquam ut porttitor leo a diam sollicitudin tempor id eu.
-                        </p>
+                    <section id="content">
+                        {!! $post->content !!}
                     </section>
 
                     <footer class="mt-8">
                         <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm md:text-base">Tags:</p>
                         <div class="flex flex-wrap gap-2">
-                            <a href="#"
-                                class="inline-block bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full px-3 py-1 text-sm font-semibold">Technology</a>
-                            <a href="#"
-                                class="inline-block bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full px-3 py-1 text-sm font-semibold">Laravel</a>
-                            <a href="#"
-                                class="inline-block bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full px-3 py-1 text-sm font-semibold">Web
-                                Development</a>
+                            @foreach ($post->tags as $tag)
+                                <a href="{{ route('tag.show', $tag->name) }}"
+                                    class="inline-block bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full px-3 py-1 text-sm font-semibold">{{ $tag->name }}</a>
+                            @endforeach
+
                         </div>
                         <hr class="border-gray-300 dark:border-gray-700 mt-6">
                         <p class="text-gray-600 dark:text-gray-400 mt-4 text-sm md:text-base">Share this post:</p>
@@ -46,22 +38,16 @@
 
                 <div class="mt-8 mb-4">
                     <h4 class="text-xl md:text-2xl font-bold mb-4">Comments</h4>
-                    <!-- Comments section -->
-                    <div class="mb-6">
-                        <strong class="block text-lg">Jane Smith</strong>
-                        <span class="text-gray-600 dark:text-gray-400">on August 15, 2024</span>
-                        <p class="mt-2">Great post! Learned a lot about the new features in Laravel.</p>
-                    </div>
-                    <div class="mb-6">
-                        <strong class="block text-lg">Michael Johnson</strong>
-                        <span class="text-gray-600 dark:text-gray-400">on August 14, 2024</span>
-                        <p class="mt-2">Thanks for sharing! This was really helpful for my recent project.</p>
-                    </div>
-                    <div class="mb-6">
-                        <strong class="block text-lg">Alice Brown</strong>
-                        <span class="text-gray-600 dark:text-gray-400">on August 13, 2024</span>
-                        <p class="mt-2">Could you provide more details on the setup process?</p>
-                    </div>
+                    @if ($post->comment !== null && $post->comment->count() > 0)
+                        <!-- Comments section -->
+                        <div class="mb-6">
+                            <strong class="block text-lg">Jane Smith</strong>
+                            <span class="text-gray-600 dark:text-gray-400">on August 15, 2024</span>
+                            <p class="mt-2">Great post! Learned a lot about the new features in Laravel.</p>
+                        </div>
+                    @else
+                        <p class="text-gray-600 dark:text-gray-400 mt-4">No comments yet.</p>
+                    @endif
                 </div>
 
                 <!-- Comment Form -->
@@ -116,8 +102,6 @@
                                 Design</a></li>
                     </ul>
                 </div>
-
-
             </aside>
         </div>
     </main>
