@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <main class="mx-auto py-2 lg:py-6 lg:px-8">
+    <main class="mx-auto py-2 lg:py-6 lg:px-8" style="height: calc(100vh - 132px)">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Main Content Column (75%) -->
             <div class="lg:w-3/4 px-4 py-4 lg:px-2 lg:pr-0">
@@ -16,52 +16,20 @@
 
                 <!-- Category Cards Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Category Card 1 -->
-                    <div class="">
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://via.placeholder.com/400x200" alt="Category 1 Image"
-                                class="w-full h-40 object-cover">
-                            <div class="p-6">
-                                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Category 1</h2>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">A brief description of what Category 1
-                                    covers. Explore articles and posts related to this topic.</p>
-                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Explore
-                                    Category</a>
+                    @foreach ($categories as $i => $category)
+                        <div class="">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                                <div class="p-6">
+                                    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+                                        {{ $category->name }}</h2>
+                                    <p class="text-gray-600 dark:text-gray-400 mb-4">{{ $category->description }}</p>
+                                    <a href="{{ route('category.show', strtolower(Str::slug($category->name))) }}"
+                                        class="text-indigo-600 dark:text-indigo-400 hover:underline">Explore
+                                        Category</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Category Card 2 -->
-                    <div class="w-full">
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://via.placeholder.com/400x200" alt="Category 2 Image"
-                                class="w-full h-40 object-cover">
-                            <div class="p-6">
-                                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Category 2</h2>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">A brief description of what Category 2
-                                    covers. Explore articles and posts related to this topic.</p>
-                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Explore
-                                    Category</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Category Card 3 -->
-                    <div class="w-full">
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://via.placeholder.com/400x200" alt="Category 3 Image"
-                                class="w-full h-40 object-cover">
-                            <div class="p-6">
-                                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Category 3</h2>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">A brief description of what Category 3
-                                    covers. Explore articles and posts related to this topic.</p>
-                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Explore
-                                    Category</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Additional Category Cards can be added here -->
+                    @endforeach
                 </div>
             </div>
 
@@ -92,7 +60,14 @@
                 </div>
             </aside>
         </div>
+
+        <div class=" block md:hidden">
+            @include('layouts.footer')
+        </div>
+
     </main>
 
-    @include('layouts.footer')
+    <div class="hidden md:block">
+        @include('layouts.footer')
+    </div>
 @endsection
