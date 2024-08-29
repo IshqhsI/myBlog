@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <main class="mx-auto py-2 lg:py-6 lg:px-8">
+    <main class="mx-auto py-2 lg:py-6 lg:px-8" style="height: calc(100vh - 132px)">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Main Content Column (75%) -->
             <div class="lg:w-3/4 px-4 py-4 lg:px-2 lg:pr-0">
@@ -81,10 +81,14 @@
                 </div>
             </aside>
         </div>
+        <div class=" block md:hidden">
+            @include('layouts.footer')
+        </div>
     </main>
 
-    <!-- Footer -->
-    @include('layouts.footer')
+    <div class="hidden md:block">
+        @include('layouts.footer')
+    </div>
 
     <script>
         document.querySelectorAll('.category-button').forEach(button => {
