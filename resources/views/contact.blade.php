@@ -19,15 +19,15 @@
                                 <label for="name"
                                     class="block text-gray-800 dark:text-gray-100 font-semibold mb-2">Your
                                     Name</label>
-                                <input type="text" id="name" name="name" placeholder="John Doe"
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 transition duration-300">
+                                <input type="text" id="name" name="name" placeholder=""
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 transition duration-300" value="{{ auth()->user()->name }}">
                             </div>
                             <div>
                                 <label for="email"
                                     class="block text-gray-800 dark:text-gray-100 font-semibold mb-2">Your
                                     Email</label>
                                 <input type="email" id="email" name="email" placeholder="you@example.com"
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 transition duration-300">
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 transition duration-300" value="{{ auth()->user()->email }}" readonly>
                             </div>
                             <div>
                                 <label for="message"
