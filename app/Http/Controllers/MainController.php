@@ -44,6 +44,14 @@ class MainController extends Controller
         return view('category', compact('category'));
     }
 
+    public function tag($tag){
+        $tag = Tag::where('name', $tag)->with('posts')->first();
+        if($tag == null || $tag->count() == 0){
+            return redirect('/tags');
+        }
+        return view('tag', compact('tag'));
+    }
+
     public function about(){
         return view('about');
     }
