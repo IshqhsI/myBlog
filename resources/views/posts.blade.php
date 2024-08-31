@@ -49,7 +49,7 @@
                 <!-- Tags -->
                 <div class="flex flex-wrap mx-auto justify-center text-center lg:justify-normal gap-3 mt-4">
                     @foreach ($tags as $i => $tag)
-                        <a href="{{ route('tag.show', $tag->name) }}"
+                        <a href="{{ route('tag.show', strtolower($tag->name)) }}"
                             class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600">{{ $tag->name }}</a>
                     @endforeach
                 </div>
@@ -57,38 +57,32 @@
 
             <!-- Sidebar (25%) -->
             <aside class="hidden lg:block lg:w-1/4 p-4 pr-0 lg:border-l border-gray-200 dark:border-gray-700">
-                <!-- About Me Section -->
+                <!-- Quotes Section -->
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
-                    <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">About Me</h2>
-                    <p class="text-gray-600 dark:text-gray-400">Short bio or info about the author. Lorem ipsum dolor sit
-                        amet consectetur adipisicing elit.</p>
+                    <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">Quotes</h2>
+                    <blockquote
+                        class="text-gray-600 dark:text-gray-400 border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic">
+                        “Qui totum vult totum perdit.” – Ia yang menginginkan segalanya akan kehilangan segalanya.
+                    </blockquote>
                 </div>
 
-                <!-- Recent Posts Section -->
+                <!-- Jadwal Sholat Section -->
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
-                    <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">Recent Posts</h2>
+                    <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">Jadwal Sholat</h2>
                     <ul class="space-y-2">
-                        <li><a href="#"
-                                class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Recent
-                                Post 1</a></li>
-                        <li><a href="#"
-                                class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Recent
-                                Post 2</a></li>
-                        <li><a href="#"
-                                class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Recent
-                                Post 3</a></li>
+                        <li class="text-gray-600 dark:text-gray-400">Subuh: 04:30</li>
+                        <li class="text-gray-600 dark:text-gray-400">Dzuhur: 12:00</li>
+                        <li class="text-gray-600 dark:text-gray-400">Ashar: 15:30</li>
+                        <li class="text-gray-600 dark:text-gray-400">Maghrib: 18:00</li>
+                        <li class="text-gray-600 dark:text-gray-400">Isya: 19:30</li>
                     </ul>
                 </div>
             </aside>
-        </div>
-        <div class=" block md:hidden">
-            @include('layouts.footer')
+
         </div>
     </main>
 
-    <div class="hidden md:block">
-        @include('layouts.footer')
-    </div>
+    @include('layouts.footer')
 
     <script>
         document.querySelectorAll('.category-button').forEach(button => {
