@@ -9,9 +9,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine-ie11.min.js"
         integrity="sha512-Atu8sttM7mNNMon28+GHxLdz4Xo2APm1WVHwiLW9gW4bmHpHc/E2IbXrj98SmefTmbqbUTOztKl5PDPiu0LD/A=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/app-C5dD6b0h.css') }}">
-    <script src="{{ asset('build/assets/app-C5dD6b0h.js') }}"></script>
+    <script src="{{ asset('build/assets/app-BgvOogpt.js') }}"></script>
    <style>
         @keyframes float {
             0% {

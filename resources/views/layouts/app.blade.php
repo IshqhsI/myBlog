@@ -12,12 +12,13 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <script src="https://cdn.tiny.cloud/1/wd88eejdy66kgvd8kfkhcj4azosk0futrsfttp59mtxuhv4l/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/{{ env('TINYMCE_API_KEY') }}/tinymce/7/tinymce.min.js" referrerpolicy="origin">
+    </script>
 
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <link rel="stylesheet" href="{{ asset('build/assets/app-C5dD6b0h.css') }}">
-    <script src="{{ asset('build/assets/app-C5dD6b0h.js') }}"></script>
+    <script src="{{ asset('build/assets/app-BgvOogpt.js') }}"></script>
     @livewireStyles
 
     <!-- Styles -->
