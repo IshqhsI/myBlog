@@ -15,7 +15,9 @@
     <script src="https://cdn.tiny.cloud/1/wd88eejdy66kgvd8kfkhcj4azosk0futrsfttp59mtxuhv4l/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-C5dD6b0h.css') }}">
+    <script src="{{ asset('build/assets/app-C5dD6b0h.js') }}"></script>
     @livewireStyles
 
     <!-- Styles -->
