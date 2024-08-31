@@ -78,11 +78,10 @@
                     </ul>
                 </div>
             </aside>
-
         </div>
-    </main>
 
-    @include('layouts.footer')
+        @include('layouts.footer')
+    </main>
 
     <script>
         document.querySelectorAll('.category-button').forEach(button => {
