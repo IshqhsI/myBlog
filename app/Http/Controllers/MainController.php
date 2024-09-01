@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -58,5 +59,24 @@ class MainController extends Controller
 
     public function contact(){
         return view('contact');
+    }
+
+    public function addComment(Request $request)
+    {
+        $request->validate([
+            'post_slug' => 'required',
+            'comment_text' => 'required',
+        ]);
+
+        $post_id = Post::where('slug', $request->post_slug)->firstOrFail();
+        $post_id = $post_id->id;
+
+        $comment = new Comment();
+        $comment->post_id = $post_id;
+        $comment->user_id = auth()->user()->id;
+        $comment->comment_text = $request->comment_text;
+        $comment->save();
+
+        return redirect()->route('post.show', $request->post_slug);
     }
 }
