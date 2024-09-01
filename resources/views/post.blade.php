@@ -35,16 +35,17 @@
                         </div>
                     </footer>
                 </article>
-
                 <div class="mt-8 mb-4">
                     <h4 class="text-xl md:text-2xl font-bold mb-4">Comments</h4>
-                    @if ($post->comment !== null && $post->comment->count() > 0)
-                        <!-- Comments section -->
-                        <div class="mb-6">
-                            <strong class="block text-lg">Jane Smith</strong>
-                            <span class="text-gray-600 dark:text-gray-400">on August 15, 2024</span>
-                            <p class="mt-2">Great post! Learned a lot about the new features in Laravel.</p>
-                        </div>
+                    @if ($post->comments !== null && $post->comments->count() > 0)
+                        @foreach ($post->comments as $comment)
+                            <!-- Comments section -->
+                            <div class="mb-6">
+                                <strong class="block text-lg">{{ $comment->user->name }}</strong>
+                                <span class="text-gray-600 dark:text-gray-400">on {{ $comment->created_at->format('j F Y, g:i a') }}</span>
+                                <p class="mt-2">{{ $comment->comment_text }}</p>
+                            </div>
+                        @endforeach
                     @else
                         <p class="text-gray-600 dark:text-gray-400 mt-4">No comments yet.</p>
                     @endif
@@ -55,15 +56,16 @@
                     <hr class="border-gray-300 dark:border-gray-700 mt-6">
                     <div class="mt-8">
                         <h4 class="text-xl md:text-2xl font-bold mb-4 ml-1">Leave a Comment</h4>
-                        <form action="{{ route('comments.store') }}" method="POST"
+                        <form action="{{ route('comments.user.store') }}" method="POST"
                             class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg text-gray-900">
                             @csrf
                             <div class="mb-2">
                                 <label for="comment"
                                     class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">Comment</label>
-                                <textarea id="comment" name="comment" rows="4"
+                                <textarea id="comment" name="comment_text" rows="4"
                                     class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
                                     required placeholder="Write your comment here..."></textarea>
+                                <input type="hidden" name="post_slug" value="{{ $post->slug }}">
                             </div>
                             <button type="submit"
                                 class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600">Submit
