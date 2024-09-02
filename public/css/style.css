@@ -1,128 +1,325 @@
-#content img {
-    width: 50%;
-    height: auto;
+/* Gaya umum untuk elemen dengan ID content */
+#content {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    /* padding: 20px; */
+    /* max-width: 900px; */
+    margin: 0 auto; /* Centering content */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-#content iframe {
-    max-width: 100%;
-    height: auto;
+/* Gaya default (mode terang) */
+html {
+    background-color: #f0f0f0;
+    color: #333333;
 }
 
-#content table {
-    width: 100%;
-    border-collapse: collapse;
+#content {
+    background-color: #ffffff;
+    color: #333333;
 }
 
-#content th,
-td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-#content th {
-    background-color: #f2f2f2;
-}
-
-#content tr:hover {
-    background-color: #f5f5f5;
-}
-
-#content a {
-    color: #0070f3;
-    text-decoration: none;
-}
-
-#content a:hover {
-    text-decoration: underline;
-}
-
+/* Heading */
 #content h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+#content h2,
+#content h3,
+#content h4,
+#content h5,
+#content h6 {
+    margin-top: 0;
+    margin-bottom: 16px;
     font-weight: bold;
-    margin-bottom: 10px;
+    color: #222;
 }
 
+#content h1 {
+    font-size: 2.5em;
+    border-bottom: 3px solid #007bff;
+    padding-bottom: 10px;
+    background: linear-gradient(135deg, #007bff 0%, #00c6ff 100%);
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px 15px;
+}
+
+#content h2 {
+    font-size: 2em;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 8px;
+    color: #007bff;
+}
+
+#content h3 {
+    font-size: 1.75em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px;
+}
+
+#content h4 {
+    font-size: 1.5em;
+}
+
+#content h5 {
+    font-size: 1.25em;
+}
+
+#content h6 {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Paragraf */
 #content p {
-    margin-bottom: 10px;
+    margin: 0 0 20px;
+    font-size: 1.1em;
+    color: #444;
+    text-justify: auto;
 }
 
+/* List */
 #content ul,
-ol {
-    margin-bottom: 10px;
+#content ol {
+    margin: 0 0 20px;
     padding-left: 20px;
 }
 
 #content ul li,
-ol li {
-    margin-bottom: 5px;
+#content ol li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 1.5em;
 }
 
+#content ul li::before,
+#content ol li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #007bff;
+    font-size: 1.2em;
+}
+
+/* Link */
+#content a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+#content a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Blockquote */
 #content blockquote {
-    margin: 0 0 10px;
-    padding: 10px;
-    border-left: 4px solid #ccc;
+    border-left: 4px solid #007bff;
+    padding-left: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    background-color: #f2f9ff;
+    color: #555;
+    border-radius: 4px;
+    position: relative;
+}
+
+#content blockquote::before {
+    content: "“";
+    font-size: 4em;
+    color: #007bff;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    opacity: 0.3;
+}
+
+/* Image */
+#content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+#content img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Table */
+#content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#content th,
+#content td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#content th {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+/* Code */
+#content code {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, monospace;
+    color: #d63384;
 }
 
 #content pre {
-    background-color: #f5f5f5;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: "Courier New", Courier, monospace;
+    color: #d63384;
+    line-height: 1.5;
+}
+
+/* Form Elements */
+#content input,
+#content select,
+#content textarea,
+#content button {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 8px 0;
     padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-#content code {
-    background-color: #f5f5f5;
-    padding: 2px 4px;
-    border-radius: 4px;
+#content input:focus,
+#content select:focus,
+#content textarea:focus,
+#content button:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
-#content pre code {
+/* Button */
+#content input[type="submit"],
+#content button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#content input[type="submit"]:hover,
+#content button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Mode Gelap */
+html.dark {
+    /* background-color: #121212; */
+    color: #ffffff;
+}
+
+html.dark #content {
     background-color: transparent;
-    padding: 0;
+    color: #e0e0e0;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
 }
 
-#content table code {
-    background-color: transparent;
-    padding: 0;
+html.dark #content h1,
+html.dark #content h2,
+html.dark #content h3,
+html.dark #content h4,
+html.dark #content h5,
+html.dark #content h6 {
+    color: #e0e0e0;
 }
 
-#content table td code {
-    background-color: transparent;
-    padding: 0;
+html.dark #content h1 {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+    border-bottom: 3px solid #00c6ff;
 }
 
-#content table th code {
-    background-color: transparent;
-    padding: 0;
+html.dark #content h2 {
+    color: #00c6ff;
 }
 
-#content table td:last-child code {
-    white-space: nowrap;
+html.dark #content p {
+    color: #ffffff;
+    text-align: justify;
 }
 
-#content table th:last-child code {
-    white-space: nowrap;
+html.dark #content blockquote {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border-left: 4px solid #00c6ff;
 }
 
-@media (max-width: 1024px) {
-    #content img {
-        width: 75%;
-        height: auto;
-    }
+html.dark #content code {
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    color: #ff79c6;
 }
 
-@media (max-width: 768px) {
-    #content table {
-        display: block;
-        overflow-x: auto;
-    }
+html.dark #content pre {
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    color: #ff79c6;
+}
 
-    #content img {
-        width: 100%;
-        height: auto;
-    }
+html.dark #content table {
+    border-collapse: collapse;
+}
+
+html.dark #content th,
+html.dark #content td {
+    border: 1px solid #333;
+    padding: 12px;
+}
+
+html.dark #content th {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+html.dark #content input,
+html.dark #content select,
+html.dark #content textarea,
+html.dark #content button {
+    background-color: #333;
+    border: 1px solid #444;
+    color: #e0e0e0;
+}
+
+html.dark #content input:focus,
+html.dark #content select:focus,
+html.dark #content textarea:focus,
+html.dark #content button:focus {
+    border-color: #00c6ff;
+    box-shadow: 0 0 4px rgba(0, 198, 255, 0.5);
+}
+
+html.dark #content input[type="submit"],
+html.dark #content button {
+    background-color: #00c6ff;
+}
+
+html.dark #content input[type="submit"]:hover,
+html.dark #content button:hover {
+    background-color: #007bff;
 }
