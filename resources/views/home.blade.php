@@ -20,11 +20,9 @@
         </section>
 
         <hr class="border-gray-300 dark:border-gray-700 mx-4 md:mx-6 mb-8">
-
-        <!-- Featured Post -->
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden mb-12 mx-4 md:mx-6">
             <img src="{{ asset('storage/posts/' . $posts[0]->image) }}" alt="Featured Post"
-                class="w-full h-80 object-cover">
+                class="w-full h-full lg:h-96 object-contain">
             <div class="p-6">
                 <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">{{ $posts[0]->title }}</h2>
                 <p class="mt-2 text-gray-600 dark:text-gray-400"> {!! \Illuminate\Support\Str::words(strip_tags($posts[0]->content), 30, '...') !!}</p>
@@ -33,6 +31,7 @@
                     more →</a>
             </div>
         </div>
+
 
         <div class="mb-8 md:mx-6">
             <div class="flex border-b border-gray-300 dark:border-gray-600">
@@ -51,15 +50,15 @@
             @if ($posts->count() === 0)
                 <p>No posts found.</p>
             @else
-                @foreach ($posts as $i => $post)
+                @foreach ($recentPosts as $i => $post)
                     <!-- Post Card -->
                     <div class="post-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-95"
                         data-category="{{ $post->category->name }}">
                         <img src="{{ asset('storage/posts/' . $post->image) }}" alt="Post image"
-                            class="w-full h-48 object-cover">
+                            class="w-full md:h-96 object-contain border-b border-gray-300">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{{ $post->title }}</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">{!! \Illuminate\Support\Str::words(strip_tags($post->content), 30, '...') !!}</p>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">{!! \Illuminate\Support\Str::words(strip_tags($post->content), 20, '...') !!}</p>
                             <a href="{{ route('post.show', $post->slug) }}"
                                 class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold">Read
                                 more →</a>
