@@ -34,7 +34,12 @@ class MainController extends Controller
         if($post == null || $post->count() == 0){
             return redirect('/posts');
         }
-        return view('post', compact('post'));
+        $categories = Category::withCount('posts')
+            ->orderBy('posts_count', 'desc')
+            ->limit(3)
+            ->get();
+        $recentPosts = Post::orderBy('created_at', 'desc')->limit(3)->get();
+        return view('post', compact('post', 'categories', 'recentPosts'));
     }
 
     public function category($category){
