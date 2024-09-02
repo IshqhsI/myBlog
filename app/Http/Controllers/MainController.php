@@ -12,9 +12,12 @@ class MainController extends Controller
 {
     //
     public function home(){
-        $posts = Post::all();
+
+        $recentPosts = Post::orderBy('created_at', 'desc')->limit(3)->get();
+        // $featuredPosts = Post::where('featured', 1)->orderBy('created_at', 'desc')->limit(3)->get();
+        $posts = Post::orderBy('created_at', 'asc')->limit(1)->get();
         $categories = Category::all();
-        return view('home', compact('posts', 'categories'));
+        return view('home', compact('posts', 'categories', 'recentPosts'));
     }
 
     public function posts(){
