@@ -42,7 +42,8 @@
                             <!-- Comments section -->
                             <div class="mb-6">
                                 <strong class="block text-lg">{{ $comment->user->name }}</strong>
-                                <span class="text-gray-600 dark:text-gray-400">on {{ $comment->created_at->format('j F Y, g:i a') }}</span>
+                                <span class="text-gray-600 dark:text-gray-400">on
+                                    {{ $comment->created_at->format('j F Y, g:i a') }}</span>
                                 <p class="mt-2">{{ $comment->comment_text }}</p>
                             </div>
                         @endforeach
@@ -79,29 +80,31 @@
 
             <!-- Sidebar (Right Column) -->
             <aside class="hidden lg:block lg:w-1/4 px-4 pr-0 py-6 lg:border-l border-gray-200 dark:border-gray-700">
-                <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
-                    <h2 class="text-xl font-bold mb-4">About the Author</h2>
-                    <p class="text-gray-700 dark:text-gray-300">John Doe is a web developer with over 10 years of experience
-                        in building web applications using modern technologies.</p>
+                <!-- Quotes Section -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+                    <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">Quotes</h2>
+                    <blockquote
+                        class="text-gray-600 dark:text-gray-400 border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic">
+                        “Tidak ada rasa bersalah yang bisa mengubah masa lalu, dan tidak ada kekhawatiran yang dapat mengubah masa depan.” – Umar bin Khattab.
+                    </blockquote>
                 </div>
 
                 <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
                     <h2 class="text-xl font-bold mb-4">Categories</h2>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-blue-600 dark:text-blue-400">Technology</a></li>
-                        <li><a href="#" class="text-blue-600 dark:text-blue-400">Laravel</a></li>
-                        <li><a href="#" class="text-blue-600 dark:text-blue-400">Web Development</a></li>
+                        @foreach ($categories as $i => $category)
+                            <li><a href="{{ route('category.show', strtolower(Str::slug($category->name))) }}"
+                                    class="text-blue-600 dark:text-blue-400">{{ $category->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
                     <h2 class="text-xl font-bold mb-4">Recent Posts</h2>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-blue-600 dark:text-blue-400">How to Get Started with Laravel
-                                10</a></li>
-                        <li><a href="#" class="text-blue-600 dark:text-blue-400">Understanding Flexbox in CSS</a></li>
-                        <li><a href="#" class="text-blue-600 dark:text-blue-400">Top 10 Tips for Effective Web
-                                Design</a></li>
+                        @foreach ($recentPosts as $i => $recentPost)
+                            <li><a href="{{ route('post.show', $recentPost->slug) }}" class="text-blue-600 dark:text-blue-400">{{ $recentPost->title }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </aside>
