@@ -6,7 +6,7 @@
                 <a href="{{ route('home') }}"
                     class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('home') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Home</a>
                 <a href="{{ route('posts') }}"
-                    class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('posts') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('posts.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Posts</a>
+                    class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('posts') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('post.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Posts</a>
                 <a href="{{ route('categories') }}"
                  class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('categories') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('category.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}"> Categories</a>
                 <a href="{{ route('about') }}"
@@ -48,7 +48,7 @@
             <a href="{{ route('home') }}"
                 class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('home') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Home</a>
             <a href="{{ route('posts') }}"
-                class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('posts') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('posts.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Posts</a>
+                class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('posts') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('post.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Posts</a>
             <a href="{{ route('categories') }}" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('categories') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('category.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}"> Categories</a>
             <a href="{{ route('about') }}"
                 class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('about') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">About</a>
