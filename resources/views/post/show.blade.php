@@ -8,7 +8,7 @@
         <div class="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
             <article class="space-y-8">
                 <!-- Header -->
-                <header class="space-y-6">
+                <header class="space-y-6 mb-6">
                     <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">{{ $post->title }}</h1>
                     <p class="text-gray-700 dark:text-gray-300 text-base md:text-lg">
                         {{ $post->user->name }}
@@ -17,7 +17,7 @@
                     </p>
                     @if ($post->image)
                         <img src="{{ asset('storage/posts/' . $post->image) }}"
-                            class="w-full aspect-video h-auto rounded-lg object-cover shadow-md"
+                            class="w-full aspect-video h-auto rounded-lg object-cover shadow-md mb-6"
                             alt="{{ $post->title }}">
                     @endif
                 </header>
