@@ -55,7 +55,7 @@
                     <div class="post-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-95"
                         data-category="{{ $post->category->name }}">
                         <img src="{{ asset('storage/posts/' . $post->image) }}" alt="Post image"
-                            class="w-full md:h-96 object-contain border-b border-gray-300">
+                            class="w-full md:h-80 object-contain border-b border-gray-300">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{{ $post->title }}</h3>
                             <p class="text-gray-600 dark:text-gray-400 mb-4">{!! \Illuminate\Support\Str::words(strip_tags($post->content), 20, '...') !!}</p>
