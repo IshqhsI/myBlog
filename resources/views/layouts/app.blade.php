@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 
 <head>
     <meta charset="utf-8">
@@ -17,7 +17,7 @@
 
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-C5dD6b0h.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DZU4Uclb.css') }}">
     <script src="{{ asset('build/assets/app-BgvOogpt.js') }}"></script>
     @livewireStyles
 
