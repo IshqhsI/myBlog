@@ -47,6 +47,7 @@ class MainController extends Controller
     }
 
     public function category($category){
+        $category = str_replace('-', ' ', $category);
         $category = Category::where('name', $category)->with('posts')->first();
         if($category == null || $category->count() == 0){
             return redirect('/categories');
