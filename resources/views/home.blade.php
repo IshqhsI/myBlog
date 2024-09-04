@@ -88,10 +88,6 @@
     @include('layouts.footer')
 
     <script>
-        document.getElementById('darkModeToggle').addEventListener('click', function() {
-            document.documentElement.classList.toggle('dark');
-        });
-
         document.querySelectorAll('.tab-button').forEach(button => {
             button.addEventListener('click', () => {
                 const category = button.id;
