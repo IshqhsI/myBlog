@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <main class="mx-auto py-2 lg:py-6 lg:px-8" style="height: calc(100vh - 132px)">
+    <main class="mx-auto py-2 lg:py-6 lg:px-8" style="min-height: calc(100vh - 132px)">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Main Content Column (75%) -->
             <div class="lg:w-3/4 px-4 py-4 lg:px-2 lg:pr-0">
@@ -35,27 +35,25 @@
 
             <!-- Sidebar (25%) -->
             <aside class="hidden lg:block lg:w-1/4 p-4 pr-0 lg:border-l border-gray-200 dark:border-gray-700">
-
-                <!-- About Me Section -->
+                <!-- Quotes Section -->
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
-                    <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">About Me</h2>
-                    <p class="text-gray-600 dark:text-gray-400">Short bio or info about the author. Lorem ipsum dolor sit
-                        amet consectetur adipisicing elit.</p>
+                    <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">Quotes</h2>
+                    <blockquote
+                        class="text-gray-600 dark:text-gray-400 border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic">
+                        “Aku ingin mencintaimu dengan sederhana. Seperti kata yang tak sempat diucapkan, kayu kepada api
+                        yang menjadikannya abu. Aku ingin mencintaimu dengan sederhana. Seperti isyarat yang tak sempat
+                        dikirimkan, awan kepada hujan yang menjadikannya tiada.” – Kahlil Gibran
+                    </blockquote>
                 </div>
 
                 <!-- Recent Posts Section -->
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
                     <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">Recent Posts</h2>
                     <ul class="space-y-2">
-                        <li><a href="#"
-                                class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Recent
-                                Post 1</a></li>
-                        <li><a href="#"
-                                class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Recent
-                                Post 2</a></li>
-                        <li><a href="#"
-                                class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Recent
-                                Post 3</a></li>
+                        @foreach ($recentPosts as $i => $recentPost)
+                            <li><a href="{{ route('post.show', $recentPost->slug) }}"
+                                    class="text-blue-600 dark:text-blue-400">{{ $recentPost->title }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </aside>
