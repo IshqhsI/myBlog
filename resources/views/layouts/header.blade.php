@@ -8,7 +8,8 @@
                 <a href="{{ route('posts') }}"
                     class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('posts') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('post.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Posts</a>
                 <a href="{{ route('categories') }}"
-                 class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('categories') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('category.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}"> Categories</a>
+                    class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('categories') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('category.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">
+                    Categories</a>
                 <a href="{{ route('about') }}"
                     class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300 {{ request()->routeIs('about') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">About</a>
                 <a href="{{ route('contact') }}"
@@ -18,20 +19,32 @@
                     <a href="{{ route('dashboard') }}"
                         class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-2 transition duration-300">Dashboard</a>
                 @endrole
+
             </div>
             <div class="flex items-center space-x-4">
                 <form class="hidden md:flex flex-grow max-w-md">
                     <input type="text" placeholder="Search..."
                         class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400">
                 </form>
-                <button id="darkModeToggle" aria-label="Toggle Dark Mode"
-                    class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition duration-300 transform hover:scale-110">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                </button>
+                {{-- Button Login --}}
+                <div class="hidden md:flex">
+                    @if (Route::has('login') && !Auth::check())
+                        <a href="{{ route('login') }}"
+                            class="inline-block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-blue-700 rounded-md border border-gray-300 dark:border-blue-700 hover:bg-gray-50 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-blue-500 transition duration-300">
+                            Login
+                        </a>
+                    @else
+                        {{-- Form Logout --}}
+                        <form method="POST" action="{{ route('logout') }}" class="inline">
+                            @csrf
+                            <button type="submit"
+                                class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 dark:bg-indigo-700 rounded-md border border-transparent hover:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition duration-300">
+                                Logout
+                            </button>
+                        </form>
+                    @endif
+                </div>
+
                 <button @click="isOpen = !isOpen" aria-label="Open/Close Menu" class="md:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -49,7 +62,9 @@
                 class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('home') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Home</a>
             <a href="{{ route('posts') }}"
                 class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('posts') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('post.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">Posts</a>
-            <a href="{{ route('categories') }}" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('categories') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('category.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}"> Categories</a>
+            <a href="{{ route('categories') }}"
+                class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('categories') ? 'text-indigo-600 dark:text-indigo-400' : '' }} {{ request()->routeIs('category.show') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">
+                Categories</a>
             <a href="{{ route('about') }}"
                 class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 {{ request()->routeIs('about') ? 'text-indigo-600 dark:text-indigo-400' : '' }}">About</a>
             <a href="{{ route('contact') }}"
@@ -59,6 +74,21 @@
                 <a href="{{ route('dashboard') }}"
                     class="block py-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">Dashboard</a>
             @endrole
+            @if (Route::has('login') && !Auth::check())
+                <a href="{{ route('login') }}"
+                    class="py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-blue-600 rounded-md border border-gray-300 dark:border-blue-700 hover:bg-gray-50 dark:hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-blue-500 transition duration-300 block mt-2 text-center">
+                    Login
+                </a>
+            @else
+                {{-- Form Logout --}}
+                <form method="POST" action="{{ route('logout') }}" class="w-full mt-2">
+                    @csrf
+                    <button type="submit"
+                        class="py-2 text-sm font-medium text-white bg-indigo-600 dark:bg-indigo-700 rounded-md border border-transparent hover:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition duration-300 text-center inline-block w-full">
+                        Logout
+                    </button>
+                </form>
+            @endif
         </div>
     </nav>
 </header>
