@@ -29,7 +29,8 @@ class MainController extends Controller
 
     public function categories(){
         $categories = Category::all();
-        return view('categories', compact('categories'));
+        $recentPosts = Post::orderBy('created_at', 'desc')->limit(3)->get();
+        return view('categories', compact('categories', 'recentPosts'));
     }
 
     public function post($post){
