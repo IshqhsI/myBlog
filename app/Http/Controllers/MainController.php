@@ -13,11 +13,14 @@ class MainController extends Controller
     //
     public function home(){
 
-        $recentPosts = Post::orderBy('created_at', 'desc')->limit(3)->get();
+        $recentPosts = Post::orderBy('created_at', 'desc')->with('category')->limit(3)->get();
         // $featuredPosts = Post::where('featured', 1)->orderBy('created_at', 'desc')->limit(3)->get();
         $posts = Post::orderBy('created_at', 'asc')->limit(1)->get();
-        $categories = Category::all();
-        return view('home', compact('posts', 'categories', 'recentPosts'));
+        $categories = [];
+        foreach($recentPosts as $post){
+            $categories[] = $post->category;
+        }
+        return view('home', compact('posts', 'recentPosts', 'categories'));
     }
 
     public function posts(){
