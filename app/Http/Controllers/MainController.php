@@ -25,7 +25,7 @@ class MainController extends Controller
 
     public function posts(){
         $posts = Post::all();
-        $categories = Category::all();
+        $categories = Category::withCount('posts')->orderBy('posts_count', 'desc')->limit(5)->get();
         $tags = Tag::all();
         return view('posts', compact('posts', 'categories', 'tags'));
     }
