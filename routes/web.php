@@ -19,6 +19,8 @@ Route::get('/', [MainController::class, 'home'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 
+Route::post('/contact/submit', [MainController::class, 'contactSubmit'])->name('contactSubmit');
+
 Route::get('/posts', [MainController::class, 'posts'])->name('posts');
 Route::get('/posts/{post}', [MainController::class, 'post'])->name('post.show');
 
