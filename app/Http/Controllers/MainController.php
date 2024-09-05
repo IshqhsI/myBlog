@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Comment;
@@ -96,5 +97,32 @@ class MainController extends Controller
         $comment->save();
 
         return redirect()->route('post.show', $request->post_slug);
+    }
+
+    public function contactSubmit(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
+        ]);
+
+        $name = $request->name;
+        $email = $request->email;
+        $message = $request->message;
+
+        $data = [
+            'name' => $name,
+            'email' => $email,
+            'message' => $message
+        ];
+
+        Mail::raw("Message from {$data['name']} ({$data['email']}):\n\n{$data['message']}", function ($message) use ($data) {
+            $message->to('oneridh18@gmail.com')
+                ->from($data['email'], $data['name'])
+                ->subject("Contact form submission"); // Optional, you can remove this line if you don't want a subject.
+        });
+
+        return redirect()->back();
     }
 }
