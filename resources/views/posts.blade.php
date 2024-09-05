@@ -37,7 +37,7 @@
                             <div class="p-6">
                                 <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{{ $post->title }}
                                 </h3>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">{!! \Illuminate\Support\Str::words(strip_tags($post->content), 30, '...') !!}</p>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">{!! \Illuminate\Support\Str::words(strip_tags($post->content), 20, '...') !!}</p>
                                 <a href="{{ route('post.show', $post->slug) }}"
                                     class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold">Read
                                     more →</a>
@@ -66,15 +66,13 @@
                     </blockquote>
                 </div>
 
-                <!-- Jadwal Sholat Section -->
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
-                    <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">Jadwal Sholat</h2>
+                <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
+                    <h2 class="text-xl font-bold mb-4">Categories</h2>
                     <ul class="space-y-2">
-                        <li class="text-gray-600 dark:text-gray-400">Subuh: 04:30</li>
-                        <li class="text-gray-600 dark:text-gray-400">Dzuhur: 12:00</li>
-                        <li class="text-gray-600 dark:text-gray-400">Ashar: 15:30</li>
-                        <li class="text-gray-600 dark:text-gray-400">Maghrib: 18:00</li>
-                        <li class="text-gray-600 dark:text-gray-400">Isya: 19:30</li>
+                        @foreach ($categories as $i => $category)
+                            <li><a href="{{ route('category.show', strtolower(Str::slug($category->name))) }}"
+                                    class="text-blue-600 dark:text-blue-400">{{ $category->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </aside>
