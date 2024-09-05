@@ -24,18 +24,13 @@
                     <div class="lg:w-2/3 lg:pl-8">
                         <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">A Little Bit About Me
                         </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            I’ve been passionate about technology and coding for as long as I can remember. With a
-                            background in software engineering and web development, I’ve turned this passion into a journey
-                            of learning and sharing. Here on IshqCode, you’ll find articles, tutorials, and insights that I
-                            hope will inspire and help you in your own tech journey.
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-justify">
+                            I've been passionate about technology and coding for as long as I can remember. With a background in software engineering and web development, I've turned this passion into a journey of learning and sharing. On IshqCode, you'll find articles, tutorials, and insights meant to inspire and assist you in your tech journey.
                         </p>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            When I’m not coding, you’ll find me hiking in the mountains, exploring new tech trends, or
-                            spending time with my family. I believe in continuous learning and strive to share my knowledge
-                            with the community through this blog.
+                            Outside of coding, I enjoy badminton, exploring new tech trends, and spending time with my family. I believe in continuous learning and strive to contribute to the community through this blog.
                         </p>
-                        <p class="text-gray-600 dark:text-gray-400">
+                        <p class="text-gray-600 dark:text-gray-400 text-justify">
                             Feel free to reach out if you have any questions, suggestions, or just want to chat about tech.
                             I love connecting with fellow enthusiasts and am always up for a good discussion!
                         </p>
