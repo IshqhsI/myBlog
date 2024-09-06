@@ -17,8 +17,9 @@
                     <div class="flex flex-col lg:flex-row lg:space-x-6">
                         <!-- Contact Form -->
                         <div class="lg:w-full">
-                            <form action="{{ route('contactSubmit') }}" method="POST" class="space-y-6">
-                                @csrf
+                            {{-- <form action="{{ route('contactSubmit') }}" method="POST" class="space-y-6"> --}}
+                            <form class="space-y-6">
+                                {{-- @csrf --}}
                                 <div>
                                     <label for="name"
                                         class="block text-gray-800 dark:text-gray-100 font-semibold mb-2">Your
@@ -44,7 +45,7 @@
                                 </div>
                                 <div>
                                     <button type="submit"
-                                        class="bg-indigo-800 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-95">Send
+                                        class="bg-indigo-800 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-95" disabled>Send
                                         Message</button>
                                 </div>
                             </form>
