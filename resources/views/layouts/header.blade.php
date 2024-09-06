@@ -22,8 +22,9 @@
 
             </div>
             <div class="flex items-center space-x-4">
-                <form class="hidden md:flex flex-grow max-w-md">
-                    <input type="text" placeholder="Search..."
+                <form class="hidden md:flex flex-grow max-w-md" action="{{ route('search') }}" method="POST">
+                    @csrf
+                    <input type="text" placeholder="Search..." name="search"
                         class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400">
                 </form>
                 {{-- Button Login --}}
