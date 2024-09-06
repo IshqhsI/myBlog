@@ -30,6 +30,7 @@ Route::get('/categories/{category}', [MainController::class, 'category'])->name(
 Route::get('/tags/{tag}', [MainController::class, 'tag'])->name('tag.show');
 
 Route::post('/comment/add', [MainController::class, 'addComment'])->name('comments.user.store');
+Route::post('/search', [MainController::class, 'search'])->name('search');
 
 Route::get('/test', function () {
     return view('index');
