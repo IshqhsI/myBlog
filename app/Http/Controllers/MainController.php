@@ -125,4 +125,16 @@ class MainController extends Controller
 
         return redirect()->back();
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $posts = Post::where('title', 'like', "%{$search}%")->orWhere('content', 'like', "%{$search}%")->get();
+        // Get Categories from post
+        $categories = [];
+        foreach ($posts as $post) {
+            $categories[] = $post->category;
+        }
+        return view('search', compact('posts', 'search', 'categories'));
+    }
 }
