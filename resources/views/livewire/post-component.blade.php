@@ -40,7 +40,8 @@
                         <th class="py-3 px-6 text-left">Content</th>
                         <th class="py-3 px-6 text-left">Image</th>
                         <th class="py-3 px-6 text-left">Category</th>
-                        <th class="py-3 px-6 text-left">User</th>
+                        <th class="py-3 px-6 text-left">Status</th>
+                        <th class="py-3 px-6 text-left">Author</th>
                         <th class="py-3 px-6 text-left">Action</th>
                     </tr>
                 </thead>
@@ -55,6 +56,7 @@
                                 <td class="py-3 px-6 text-left">{{ \Illuminate\Support\Str::words($post->content, 3, '...') }}</td>
                                 <td class="py-3 px-6 text-left"><img src="{{ asset('/storage/posts/' . $post->image) }}" width="200" alt=""></td>
                                 <td class="py-3 px-6 text-left">{{ $post->category->name }}</td>
+                                <td class="py-3 px-6 text-left">{{ $post->status }}</td>
                                 <td class="py-3 px-6 text-left">{{ $post->user->name }}</td>
                                 <td class="py-3 px-6 text-left">
                                     <a href="{{ route('posts.edit', $post->id) }}"
