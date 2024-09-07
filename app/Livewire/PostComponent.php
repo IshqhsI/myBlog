@@ -21,4 +21,11 @@ class PostComponent extends Component
     {
         $this->posts = Post::where('title', 'like', '%' . $this->search . '%')->orWhere('content', 'like', '%' . $this->search . '% ')->get();
     }
+
+    public function updateStatusPost($status, $id)
+    {
+        $post = Post::find($id);
+        $post->status = $status;
+        $post->save();
+    }
 }
