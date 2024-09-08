@@ -39,6 +39,12 @@
                         request()->routeIs('tags.create')">
                         {{ __('Tags') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('tags.index')" :active="request()->routeIs('tags.index') ||
+                        request()->routeIs('tags.show') ||
+                        request()->routeIs('tags.edit') ||
+                        request()->routeIs('tags.create')">
+                        {{ __('Roles') }}
+                    </x-nav-link>
 
                 </div>
             </div>
