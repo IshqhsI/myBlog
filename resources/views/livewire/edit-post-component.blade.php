@@ -75,6 +75,30 @@
                 </div>
             </div>
 
+
+        </div>
+
+        <div class="lg:flex">
+
+            <div class="w-full lg:w-1/2 p-0 lg:ps-3">
+                <div class="mb-2">
+                    <label for="status"
+                        class="block text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2">Status</label>
+                    <select id="status" name="status"
+                        class="block w-full mt-1 text-sm border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:text-gray-300">
+                        <option class="" value="" disabled selected>Select a status</option>
+                        @foreach ($statuses as $status)
+                            <option value="{{ $status }}" {{ $post->status == $status ? ' selected' : '' }}>
+                                {{ $status }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
+                        <span class="text-red-500 text-sm dark:text-red-400">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
             <div class="w-full lg:w-1/2 p-0 lg:ps-3 block">
                 <div class="mb-2">
                     {{-- Checkbox --}}
