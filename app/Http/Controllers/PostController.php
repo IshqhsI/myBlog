@@ -66,7 +66,8 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('post.edit', compact('post', 'categories', 'tags'));
+        $statuses = ['draft', 'published', 'archived'];
+        return view('post.edit', compact('post', 'categories', 'tags', 'statuses'));
     }
 
 
@@ -77,6 +78,7 @@ class PostController extends Controller
             'slug' => 'required',
             'content' => 'required',
             'category_id' => 'required',
+            'status' => 'required',
         ]);
 
         $request['user_id'] = auth()->user()->id;
@@ -88,6 +90,7 @@ class PostController extends Controller
             'content' => $request['content'],
             'category_id' => $request['category_id'],
             'user_id' => $request['user_id'],
+            'status' => $request['status'],
         ]);
 
         if ($request->hasFile('image')) {
