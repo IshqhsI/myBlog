@@ -13,14 +13,15 @@ class EditPostComponent extends Component
     public $tags;
     public $slug;
     public $edit = 0;
+    public $statuses;
 
-
-    public function mount($post, $categories, $tags)
+    public function mount($post, $categories, $tags, $statuses)
     {
         $this->post = $post;
         $this->categories = $categories;
         $this->tags = $tags;
         $this->title = $post->title;
+        $this->statuses = $statuses;
     }
 
     public function render()
