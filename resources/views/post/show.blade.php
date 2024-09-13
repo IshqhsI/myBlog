@@ -39,8 +39,27 @@
 
                     </div>
                     <p class="text-gray-700 dark:text-gray-300 text-base md:text-lg mt-4">Share this post:</p>
-                    <div>
-                        <!-- Social media share buttons can be added here -->
+                    <div class="flex space-x-4 mt-4">
+                        <!-- Facebook Share Button -->
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('post.show', $post->slug)) }}"
+                            target="_blank" class="bg-blue-600 text-white p-1 px-3 rounded-full hover:bg-blue-700"
+                            title="Share on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <!-- WhatsApp Share Button -->
+                        <a href="https://wa.me/?text={{ urlencode($post->title . ' ' . route('post.show', $post->slug)) }}"
+                            target="_blank" class="bg-green-600 text-white p-1 px-2 rounded-full hover:bg-green-700"
+                            title="Share on WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+
+                        <!-- X (Twitter) Share Button -->
+                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(route('post.show', $post->slug)) }}&text={{ urlencode($post->title) }}"
+                            target="_blank" class="bg-blue-400 text-white p-1 px-2 rounded-full hover:bg-blue-500"
+                            title="Share on X (Twitter)">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </div>
                 </footer>
                 <hr class="border-gray-300 dark:border-gray-700 mt-6">
