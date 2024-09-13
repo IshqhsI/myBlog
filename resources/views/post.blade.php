@@ -93,7 +93,7 @@
                         </form>
                     </div>
                 @else
-                    <p class="text-gray-600 dark:text-gray-400 mt-4">You need to be logged in to leave a comment.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mt-4">You need to be <a href="{{ route('login') }}" class="text-indigo-500">logged in</a> to leave a comment.</p>
                 @endauth
             </div>
 
