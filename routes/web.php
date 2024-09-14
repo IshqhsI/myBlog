@@ -13,6 +13,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\RoleController;
 
 Route::get('/', [MainController::class, 'home'])->name('home');
 
@@ -48,6 +49,7 @@ Route::middleware('superadmin')->group(function(){
     Route::resource('/admin/posts', PostController::class)->name('index', 'posts.index');
     Route::resource('/admin/comments', CommentController::class)->name('index', 'comments.index');
     Route::resource('/admin/tags', TagController::class)->name('index', 'tags.index');
+    Route::resource('/admin/roles', RoleController::class)->name('index', 'roles.index');
     Route::post('/upload_image', [PostController::class, 'upload'])->name('upload');
 });
 
