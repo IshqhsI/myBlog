@@ -39,10 +39,10 @@
                         request()->routeIs('tags.create')">
                         {{ __('Tags') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('tags.index')" :active="request()->routeIs('tags.index') ||
-                        request()->routeIs('tags.show') ||
-                        request()->routeIs('tags.edit') ||
-                        request()->routeIs('tags.create')">
+                    <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index') ||
+                        request()->routeIs('roles.show') ||
+                        request()->routeIs('roles.edit') ||
+                        request()->routeIs('roles.create')">
                         {{ __('Roles') }}
                     </x-nav-link>
 
@@ -132,6 +132,12 @@
                 request()->routeIs('tags.edit') ||
                 request()->routeIs('tags.create')">
                 {{ __('Tags') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index') ||
+                request()->routeIs('roles.show') ||
+                request()->routeIs('roles.edit') ||
+                request()->routeIs('roles.create')">
+                {{ __('Roles') }}
             </x-responsive-nav-link>
         </div>
 
