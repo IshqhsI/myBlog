@@ -1,6 +1,6 @@
 # Blog Pribadi Saya
 
-![Blog Pribadi Saya](https://placehold.co/1200x600/6F4E37/F5E6D8?text=Blog+Pribadi+Saya)
+![Blog Pribadi Saya](https://placehold.co/1200x600/6F4E37/F5E6D8?text=IshqBlog)
 
 Selamat datang di repositori untuk blog pribadi saya! Blog ini adalah platform di mana saya berbagi pemikiran, pengalaman, tutorial, dan wawasan tentang berbagai topik yang saya minati, seperti pengembangan web, teknologi, produktivitas, dan kehidupan sehari-hari.
 
@@ -18,10 +18,8 @@ Blog ini dibangun dengan tujuan untuk:
 * **Navigasi Intuitif:** Mudah menemukan artikel dan kategori yang relevan.
 * **Pencarian Artikel:** Fungsi pencarian untuk menemukan konten dengan cepat.
 * **Kategori & Tag:** Organisasi konten yang rapi untuk penjelajahan yang mudah.
-* **Mode Gelap/Terang (Opsional):** Pilihan tema visual untuk kenyamanan membaca.
 * **Optimasi SEO:** Struktur yang ramah mesin pencari untuk visibilitas.
-* **Integrasi Komentar (Opsional):** Memungkinkan interaksi pembaca (misalnya, Disqus, Utterances).
-* **Feed RSS:** Berlangganan pembaruan artikel terbaru.
+* **Integrasi Komentar :** Memungkinkan interaksi pembaca.
 
 ## 🛠️ Teknologi yang Digunakan
 
